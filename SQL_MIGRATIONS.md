@@ -33,3 +33,9 @@ ALTER TABLE pool.xmrtoTxn CONVERT TO CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```sql
 ALTER TABLE pool.users ADD enable_email BOOL DEFAULT true NULL;
 ```
+
+3/8/2018
+--------
+```sql
+ALTER TABLE pool.block_log ADD INDEX `diff` (`find_time`, `difficulty`);
+```
