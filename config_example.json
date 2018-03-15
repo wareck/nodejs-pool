@@ -3,6 +3,7 @@
   "bind_ip": "127.0.0.1",
   "hostname": "testpool.com",
   "db_storage_path": "CHANGEME",
+  "db_storage_max_size": 24,
   "coin": "itns",
   "mysql": {
     "connectionLimit": 20,
