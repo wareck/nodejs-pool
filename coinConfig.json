@@ -7,7 +7,7 @@
     "shapeshift": "xmr_btc",
     "xmrTo": true,
     "name": "Monero",
-    "mixIn": 4,
+    "mixIn": 6,
     "shortCode": "XMR"
   },
   "krb": {
