@@ -606,5 +606,13 @@
     "item_value": "750",
     "item_type": "int",
     "Item_desc": "Minimum difficulty of worth of shares to retain, measured in round effort. This helps make sure that multiShare * difficulty worth of shares is available even when network difficulty is extemely volatile."
+  },
+  {
+    "id": 82,
+    "module": "pool",
+    "item": "maxConnectionsPerMiner",
+    "item_value": "50",
+    "item_type": "int",
+    "Item_desc": "The maximum simultaneous connections a single miner (payout address) is allowed to a given pool daemon."
   }
 ]
