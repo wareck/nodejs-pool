@@ -26,7 +26,7 @@ sudo systemctl enable ntp
 cd /usr/local/src
 sudo git clone https://github.com/valiant1x/intensecoin.git
 cd intensecoin
-sudo git checkout xmr
+#sudo git checkout xmr
 sudo make -j$(nproc)
 sudo cp ~/nodejs-pool/deployment/intensecoin.service /lib/systemd/system/
 sudo useradd -m intensedaemon -d /home/intensedaemon
