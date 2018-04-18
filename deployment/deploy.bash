@@ -31,7 +31,13 @@ sudo make -j$(nproc)
 sudo cp ~/nodejs-pool/deployment/intensecoin.service /lib/systemd/system/
 sudo useradd -m intensedaemon -d /home/intensedaemon
 BLOCKCHAIN_DOWNLOAD_DIR=$(sudo -u intensedaemon mktemp -d)
-sudo -u intensedaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.raw https://github.com/valiant1x/intensecoin/releases/download/1.4.3/blockchain.raw
+sudo -u intensedaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.001 https://github.com/valiant1x/intensecoin/releases/download/v1.45-snap/blockchain.zip.001
+sudo -u intensedaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.002 https://github.com/valiant1x/intensecoin/releases/download/v1.45-snap/blockchain.zip.002
+sudo -u intensedaemon wget --limit-rate=50m -O $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.003 https://github.com/valiant1x/intensecoin/releases/download/v1.45-snap/blockchain.zip.003
+sudo -u intensedaemon cat $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.00* > $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip
+sudo -u intensedaemon rm -f $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.001 $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.002 $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip.003
+sudo -u intensedaemon unzip $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.zip -d $BLOCKCHAIN_DOWNLOAD_DIR
+sudo -u intensedaemon mv $BLOCKCHAIN_DOWNLOAD_DIR/blockchain $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.raw
 sudo -u intensedaemon /usr/local/src/intensecoin/build/release/bin/intense-blockchain-import --input-file $BLOCKCHAIN_DOWNLOAD_DIR/blockchain.raw --batch-size 20000 --database lmdb#fastest --verify off --data-dir /home/intensedaemon/.intensecoin
 sudo -u intensedaemon rm -rf $BLOCKCHAIN_DOWNLOAD_DIR
 sudo systemctl daemon-reload
